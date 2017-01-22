@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="A simple HTML5 Template">
+    <meta name="author" content="dron">
+    <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>按下F11体验更佳css3D cude</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css" media="screen" type="text/css"/>
+</head>
+<body>
+<div id="nav">
+    <div>选择板块</div>
+    <ul>
+        <li move="f_o">front_o</li>
+        <li move="f_t">front_t</li>
+        <li move="l_o">left_o</li>
+        <li move="l_t">left_t</li>
+        <li move="r_o">right_o</li>
+        <li move="r_t">right_t</li>
+        <li move="t_o">top_o</li>
+        <li move="t_t">top_t</li>
+        <li move="b_o">bottom_o</li>
+        <li move="b_t">bottom_t</li>
+    </ul>
+</div>
+<div id="cube">
+    <div class="back"></div>
+    <div class="bottom"></div>
+    <div class="front"></div>
+    <div class="left"></div>
+    <div class="right"></div>
+    <div class="top"></div>
+</div>
+<script src="jquery.js"></script>
+<script>
+    var navs = document.getElementById('nav').getElementsByTagName('li');
+    for (var i = 0; i < navs.length; i++) {
+        navs[i].onclick = function () {
+            for (var c = 0; c < navs.length; c++) {
+                navs[c].style.backgroundColor = ''
+            }
+            this.style.backgroundColor = 'coral';
+            var sf = {
+                f_o: {'transform': 'translateZ(960px)'},
+                f_t: {'transform': 'rotateY(180deg) translateZ(960px)'},
+                l_o: {'transform': 'rotateY(-90deg) translateX(1920px)'},
+                l_t: {'transform': 'rotateY(90deg) translateX(1920px)'},
+                r_o: {'transform': 'rotateY(90deg) translateX(-1920px)'},
+                r_t: {'transform': 'rotateY(-90deg) translateX(-1920px)'},
+                t_o: {'transform': 'rotateX(90deg) translateY(1920px)'},
+                t_t: {'transform': 'rotateX(-90deg) translateY(1500px)'},
+                b_o: {'transform': 'rotateX(-90deg) translateY(-1500px)'},
+                b_t: {'transform': 'rotateX(90deg) translateY(-960px)'}
+            };
+            var move = this.getAttribute('move');
+            $('#cube').css(sf[move]);
+        }
+    }
+</script>
+</body>
+</html>
